@@ -1,8 +1,9 @@
 // cache/redisClient.js
+require('dotenv').config();
 const { createClient } = require('redis');
 
 const client = createClient({
-  url: 'redis://127.0.0.1:6379',
+  url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
 });
 
 client.on('error', (err) => console.error(' Redis Client Error:', err));
